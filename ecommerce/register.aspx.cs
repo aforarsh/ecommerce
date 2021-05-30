@@ -27,7 +27,7 @@ namespace ecommerce
             cmd.Parameters.AddWithValue("@Gender", DropDownList1.SelectedItem.Value);
             cmd.Parameters.AddWithValue("@Address", TextBox5.Text);
             cmd.Parameters.AddWithValue("@Phone_No", TextBox6.Text);
-            cmd.Parameters.AddWithValue("@Password", TextBox7.Text);
+            cmd.Parameters.AddWithValue("@Password", TextBox7.Text);t
             cmd.ExecuteNonQuery();
             con.Close();
             Label1.Text = "Registered Successfully";

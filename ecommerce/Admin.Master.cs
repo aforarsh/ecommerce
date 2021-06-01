@@ -23,5 +23,10 @@ namespace ecommerce
         {
             Response.Redirect("AddProduct.aspx");
         }
+
+        protected void UpdateProduct_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("UpdateProduct.aspx");
+        }
     }
 }

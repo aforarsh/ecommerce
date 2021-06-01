@@ -60,13 +60,13 @@ namespace ecommerce
         protected global::System.Web.UI.WebControls.Button AddProduct;
 
         /// <summary>
-        /// Button2 control.
+        /// UpdateProduct control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::System.Web.UI.WebControls.Button UpdateProduct;
 
         /// <summary>
         /// Button3 control.

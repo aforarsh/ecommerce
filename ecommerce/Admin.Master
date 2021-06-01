@@ -28,7 +28,7 @@
         <table align="center">
             <tr style="width:1200px; color:aqua; height:160px">
                 <td>
-                    <asp:Image ID="Image1" runat="server" BorderColor="#666666" BorderWidth="3px" Height="160px" Width="1200px" ImageUrl="" />
+                    <asp:Image ID="Image1" runat="server" BorderColor="#666666" BorderWidth="3px" Height="160px" Width="1200px" ImageUrl="~/Images/admin.jpg" />
                 </td>
             </tr>
             <tr style="border-width: 8px; border-color: #666666; width: 1200px; color: #666666; height: 60px" bgcolor="c547ff">
@@ -43,7 +43,7 @@
                                 <asp:Button CssClass="button" ID="AddProduct" runat="server" Text="Add Product" Height="49px" Width="171px" Font-Bold="True" Font-Size="Medium" CausesValidation="False" BorderColor="#666666" OnClick="AddProduct_Click" />
                             </td>
                             <td>
-                                <asp:Button CssClass="button" ID="Button2" runat="server" Text="Add Product" Height="49px" Width="171px" Font-Bold="True" Font-Size="Medium" CausesValidation="False" BorderColor="#666666" />
+                                <asp:Button CssClass="button" ID="UpdateProduct" runat="server" Text="Update Product" Height="49px" Width="171px" Font-Bold="True" Font-Size="Medium" CausesValidation="False" BorderColor="#666666" OnClick="UpdateProduct_Click" />
                             </td>
                             <td>
                                 <asp:Button CssClass="button" ID="Button3" runat="server" Text="Add Product" Height="49px" Width="171px" Font-Bold="True" Font-Size="Medium" CausesValidation="False" BorderColor="#666666" />

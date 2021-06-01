@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>ZHR COMPUTER & NETWORK</title>
     <style type="text/css">
         .auto-style1 {
             width: 41%;
@@ -38,7 +38,7 @@
                 <tr>
                     <td class="auto-style1"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Email :</b></td>
                     <td>
-                        <asp:TextBox ID="TextBox3" runat="server" Height="32px" Width="373px"></asp:TextBox>
+                        <asp:TextBox ID="TextBox3" runat="server" Height="32px" Width="373px" TextMode="Email"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Email field is empty" ForeColor="Red" ControlToValidate="TextBox3">*</asp:RequiredFieldValidator>
                     </td>
                 </tr>

@@ -10,7 +10,7 @@
 
 namespace ecommerce
 {
-    public partial class Default
+    public partial class _Default
     {
     }
 }

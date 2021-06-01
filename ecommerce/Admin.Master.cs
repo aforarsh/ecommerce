@@ -13,5 +13,15 @@ namespace ecommerce
         {
 
         }
+
+        protected void AddCategory_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AddCategory.aspx");
+        }
+
+        protected void AddProduct_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AddProduct.aspx");
+        }
     }
 }

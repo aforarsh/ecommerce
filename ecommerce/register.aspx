@@ -45,7 +45,7 @@
                 <tr>
                     <td class="auto-style1"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Gender :</b></td>
                     <td class="auto-style3">
-                        <asp:DropDownList ID="DropDownList1" runat="server" Height="82px" Width="139px" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
+                        <asp:DropDownList ID="DropDownList1" runat="server" Height="30px" Width="139px" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
                             <asp:ListItem>Select Gender</asp:ListItem>
                             <asp:ListItem>Male</asp:ListItem>
                             <asp:ListItem>Female</asp:ListItem>

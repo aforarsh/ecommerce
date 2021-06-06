@@ -126,6 +126,14 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Default.Master" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="img\1.jpg" />
+    <Content Include="img\2.jpg" />
+    <Content Include="img\3.jpg" />
+    <Content Include="img\4.jpg" />
+    <Content Include="img\5.jpg" />
+    <Content Include="img\addcart.png" />
+    <Content Include="img\bg.jpg" />
+    <Content Include="img\log.jpg" />
     <Content Include="login.aspx" />
     <Content Include="register.aspx" />
     <Content Include="Scripts\bootstrap.js" />

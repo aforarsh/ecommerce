@@ -9,10 +9,6 @@
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
     <LastActiveSolutionConfig>Debug|Any CPU</LastActiveSolutionConfig>
-<<<<<<< Updated upstream
-=======
-    <ProjectView>ProjectFiles</ProjectView>
->>>>>>> Stashed changes
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>

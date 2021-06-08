@@ -46,7 +46,7 @@
                                 <asp:Button CssClass="button" ID="UpdateProduct" runat="server" Text="Update Product" Height="49px" Width="171px" Font-Bold="True" Font-Size="Medium" CausesValidation="False" BorderColor="#666666" OnClick="UpdateProduct_Click" />
                             </td>
                             <td>
-                                <asp:Button CssClass="button" ID="Button3" runat="server" Text="Add Product" Height="49px" Width="171px" Font-Bold="True" Font-Size="Medium" CausesValidation="False" BorderColor="#666666" />
+                                <asp:Button CssClass="button" ID="OrderStatus" runat="server" Text="Order Status" Height="49px" Width="171px" Font-Bold="True" Font-Size="Medium" CausesValidation="False" BorderColor="#666666" OnClick="OrderStatus_Click" />
                             </td>
                             <td>
                                 <asp:Button CssClass="button" ID="logout" runat="server" Text="Logout" Height="49px" Width="171px" Font-Bold="True" Font-Size="Medium" CausesValidation="False" BorderColor="#666666" />

@@ -28,5 +28,11 @@ namespace ecommerce
         {
             Response.Redirect("UpdateProduct.aspx");
         }
+
+        protected void OrderStatus_Click(object sender, EventArgs e)
+        {
+
+            Response.Redirect("OrderStatus.aspx");
+        }
     }
 }

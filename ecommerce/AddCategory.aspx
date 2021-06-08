@@ -29,7 +29,7 @@
         <tr>
             <td colspan="2"><br /></td>
         </tr>
-        <tr emptydatatext="No Da">
+        <tr emptydatatext="No Data">
             <td colspan="2" align="center">
                 <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AutoGenerateColumns="False" BorderColor="#333333" BorderStyle="None" BorderWidth="2px" CssClass="button" DataKeyNames="Category_ID" SortedDescendingHeaderStyle-Wrap="True" EmptyDataText="No Record To Display" Font-Bold="True" PageSize="4" Width="257px" OnPageIndexChanging="GridView1_PageIndexChanging" OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowDeleting="GridView1_RowDeleting" OnRowEditing="GridView1_RowEditing" OnRowUpdating="GridView1_RowUpdating">
                     <Columns>

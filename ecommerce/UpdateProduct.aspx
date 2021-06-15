@@ -3,13 +3,14 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div align="center" class="navbar" style="height: auto">
+        <br />
     Sort By:&nbsp;
     <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource1" DataTextField="Category_Name" DataValueField="Category_Name" Height="42px" Width="125px" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" AppendDataBoundItems="True">
         <asp:ListItem>Select Category</asp:ListItem>
         </asp:DropDownList>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ecommerceConnectionString %>" SelectCommand="SELECT [Category_Name] FROM [tb_category]"></asp:SqlDataSource>
         <hr />
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" EmptyDataText="No Product to Display" OnPageIndexChanging="GridView1_PageIndexChanging" OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowEditing="GridView1_RowEditing" OnRowUpdating="GridView1_RowUpdating">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" EmptyDataText="No Product to Display" OnPageIndexChanging="GridView1_PageIndexChanging" OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowEditing="GridView1_RowEditing" OnRowUpdating="GridView1_RowUpdating" OnRowDeleting="GridView1_RowDeleting">
             <Columns>
                 <asp:TemplateField HeaderText="Product ID">
                     <ItemTemplate>
@@ -36,9 +37,6 @@
                     <ItemStyle HorizontalAlign="Center" />
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Image">
-                    <EditItemTemplate>
-                        <asp:FileUpload ID="FileUpload1" runat="server" />
-                    </EditItemTemplate>
                     <ItemTemplate>
                         <asp:Image ID="Image2" runat="server" ImageUrl='<%# Eval("Product_Image") %>' Height="100px" Width="92px" />
                     </ItemTemplate>
@@ -63,17 +61,12 @@
                     <ItemStyle HorizontalAlign="Center" />
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Category">
-                    <EditItemTemplate>
-                        <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SqlDataSource2" DataTextField="Product_Category" DataValueField="Product_Category" SelectedValue='<%# Eval("Product_Category") %>'>
-                        </asp:DropDownList>
-                        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ecommerceConnectionString %>" SelectCommand="SELECT [Product_Category] FROM [tb_product1]"></asp:SqlDataSource>
-                    </EditItemTemplate>
                     <ItemTemplate>
                         <asp:Label ID="Label6" runat="server" Text='<%# Eval("Product_Category") %>'></asp:Label>
                     </ItemTemplate>
                     <ItemStyle HorizontalAlign="Center" />
                 </asp:TemplateField>
-                <asp:CommandField HeaderText="Operation" ShowEditButton="True">
+                <asp:CommandField HeaderText="Operation" ShowEditButton="True" ShowDeleteButton="True">
                 <ItemStyle HorizontalAlign="Center" />
                 </asp:CommandField>
             </Columns>

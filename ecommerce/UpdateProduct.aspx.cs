@@ -53,58 +53,47 @@ namespace ecommerce
         protected void GridView1_RowEditing(object sender, GridViewEditEventArgs e)
         {
             GridView1.EditIndex = e.NewEditIndex;
-            int index = e.NewEditIndex;
-            GridViewRow row = (GridViewRow)GridView1.Rows[index];
-            Label Product_ID = (Label)row.FindControl("Label1");
-            ProductId = int.Parse(Product_ID.Text.ToString());
-            SqlConnection con = new SqlConnection(str);
-            SqlDataAdapter sda = new SqlDataAdapter("SELECT * FROM tb_product1 WHERE Product_ID='" + Product_ID.Text + "' ", con);
-            DataTable dt = new DataTable();
-            sda.Fill(dt);
-            GridView1.DataSource = dt;
-            GridView1.DataBind();
+            ShowProduct();
+            //int index = e.NewEditIndex;
+            //GridViewRow row = (GridViewRow)GridView1.Rows[index];
+            //Label Product_ID = (Label)row.FindControl("Label1");
+            //ProductId = int.Parse(Product_ID.Text.ToString());
+            //SqlConnection con = new SqlConnection(str);
+            //SqlDataAdapter sda = new SqlDataAdapter("SELECT * FROM tb_product1 WHERE Product_ID='" + Product_ID.Text + "' ", con);
+            //DataTable dt = new DataTable();
+            //sda.Fill(dt);
+            //GridView1.DataSource = dt;
+            //GridView1.DataBind();
+
         }
 
         protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
-            int index = ProductId;
-            GridViewRow row = (GridViewRow)GridView1.Rows[index];
+ 
 
-            FileUpload fu = (FileUpload)row.FindControl("FileUpload1");
-            if(fu.HasFile)
-            {
-                Label Product_ID = (Label)row.FindControl("Label1");
-                TextBox Product_Name = (TextBox)row.FindControl("TextBox1");
-                TextBox Product_Desc = (TextBox)row.FindControl("TextBox2");
-                TextBox Product_Price = (TextBox)row.FindControl("TextBox3");
-                TextBox Product_Qty = (TextBox)row.FindControl("TextBox4");
-                string Product_Category = ((DropDownList)GridView1.Rows[e.RowIndex].Cells[6].FindControl("DropDownList2")).Text;
+            //    Label Product_ID = (Label)row.FindControl("Label1");
+            //    TextBox Product_Name = (TextBox)row.FindControl("TextBox1");
+            //    TextBox Product_Desc = (TextBox)row.FindControl("TextBox2");
+            //    TextBox Product_Price = (TextBox)row.FindControl("TextBox3");
+            //    TextBox Product_Qty = (TextBox)row.FindControl("TextBox4");
 
-                fu.SaveAs(Server.MapPath("~/Images/") + Path.GetFileName(fu.FileName));
-                String Product_Image = "Images/" + Path.GetFileName(fu.FileName);
-                
+            //GridViewRow row = GridView1.Rows[e.RowIndex];
+            int Product_ID = GridView1.EditIndex;
                 SqlConnection con = new SqlConnection(str);
+
                 con.Open();
-                SqlCommand cmd = new SqlCommand("UPDATE tb_product1 SET Product_Name=@1, Product_Desc=@2, Product_Image=@3, Product_Price=@4, Product_Qty=@5, Product_Category=@6 WHERE Product_ID=@7 ", con);
-                cmd.Parameters.AddWithValue("@1", Product_Name.Text);
-                cmd.Parameters.AddWithValue("@2", Product_Desc.Text);
-                cmd.Parameters.AddWithValue("@3", Product_Image);
-                cmd.Parameters.AddWithValue("@4", Product_Price.Text);
-                cmd.Parameters.AddWithValue("@5", Product_Qty.Text);
-                cmd.Parameters.AddWithValue("@6", Product_Category);
-                cmd.Parameters.AddWithValue("@7", Product_ID.Text);
+                SqlCommand cmd = new SqlCommand("UPDATE tb_product1 SET Product_Name=@1, Product_Desc=@2, Product_Price=@3, Product_Qty=@4 WHERE Product_ID=@5 ", con);
+                cmd.Parameters.AddWithValue("@1", (GridView1.Rows[e.RowIndex].FindControl("TextBox1") as TextBox).Text.Trim());
+                cmd.Parameters.AddWithValue("@2", (GridView1.Rows[e.RowIndex].FindControl("TextBox2") as TextBox).Text.Trim());
+                cmd.Parameters.AddWithValue("@3", (GridView1.Rows[e.RowIndex].FindControl("TextBox3") as TextBox).Text.Trim());
+                cmd.Parameters.AddWithValue("@4", (GridView1.Rows[e.RowIndex].FindControl("TextBox4") as TextBox).Text.Trim());
+                cmd.Parameters.AddWithValue("@5", Product_ID);
                 cmd.ExecuteNonQuery();
                 con.Close();
                 GridView1.EditIndex = -1;
-                Response.Write("<script>alert('Product Updated Successful');</script>");
                 ShowProduct();
-                DropDownList1.SelectedValue = "Select Category";  
-            }
-            else 
-            {
-                Response.Write("<script>alert('Please Select Product Image');</script>");
-            }
-            
+                Response.Write("<script>alert('Product Updated Successful');</script>");
+                //DropDownList1.SelectedValue = "Select Category";  
         }
 
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
@@ -124,6 +113,20 @@ namespace ecommerce
                 GridView1.DataBind();
             }
             
+        }
+
+        protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            int Product_ID = GridView1.EditIndex;
+            //int Product_ID = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value);
+            SqlConnection con1 = new SqlConnection(str);
+            con1.Open();
+            SqlCommand cmd1 = new SqlCommand("DELETE FROM tb_product1 WHERE Product_ID=@1", con1);
+            cmd1.Parameters.AddWithValue("@1", Product_ID);
+            cmd1.ExecuteNonQuery();
+            con1.Close();
+            Response.Write("<script>alert('Product Deleted Successful');</script>");
+            ShowProduct();
         }
     }
 }

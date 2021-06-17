@@ -128,6 +128,7 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Month.xml" />
+    <Content Include="PaymentAdmin.aspx" />
     <Content Include="Year.xml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Images\calendar-icon.png" />
@@ -222,6 +223,13 @@
     </Compile>
     <Compile Include="OrderStatus.aspx.designer.cs">
       <DependentUpon>OrderStatus.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentAdmin.aspx.cs">
+      <DependentUpon>PaymentAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PaymentAdmin.aspx.designer.cs">
+      <DependentUpon>PaymentAdmin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="register.aspx.cs">

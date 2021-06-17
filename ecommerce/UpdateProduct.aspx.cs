@@ -13,7 +13,7 @@ namespace ecommerce
     public partial class UpdateProduct : System.Web.UI.Page
     {
         string str = "Data Source=DESKTOP-GNG1HEH\\SQLEXPRESS;Initial Catalog=ecommerce; Integrated Security=True;";
-        int ProductId;
+        //int ProductId;
         protected void Page_Load(object sender, EventArgs e)
         {
             //if (!IsPostBack)
@@ -46,7 +46,6 @@ namespace ecommerce
         protected void GridView1_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
             GridView1.EditIndex = -1;
-            DropDownList1.SelectedValue = "Select Category";
             ShowProduct();
         }
 
@@ -76,11 +75,10 @@ namespace ecommerce
             //    TextBox Product_Desc = (TextBox)row.FindControl("TextBox2");
             //    TextBox Product_Price = (TextBox)row.FindControl("TextBox3");
             //    TextBox Product_Qty = (TextBox)row.FindControl("TextBox4");
-
             //GridViewRow row = GridView1.Rows[e.RowIndex];
-            int Product_ID = GridView1.EditIndex;
+            
+                int Product_ID = GridView1.EditIndex;
                 SqlConnection con = new SqlConnection(str);
-
                 con.Open();
                 SqlCommand cmd = new SqlCommand("UPDATE tb_product1 SET Product_Name=@1, Product_Desc=@2, Product_Price=@3, Product_Qty=@4 WHERE Product_ID=@5 ", con);
                 cmd.Parameters.AddWithValue("@1", (GridView1.Rows[e.RowIndex].FindControl("TextBox1") as TextBox).Text.Trim());
@@ -88,6 +86,7 @@ namespace ecommerce
                 cmd.Parameters.AddWithValue("@3", (GridView1.Rows[e.RowIndex].FindControl("TextBox3") as TextBox).Text.Trim());
                 cmd.Parameters.AddWithValue("@4", (GridView1.Rows[e.RowIndex].FindControl("TextBox4") as TextBox).Text.Trim());
                 cmd.Parameters.AddWithValue("@5", Product_ID);
+                //cmd.Parameters.AddWithValue("@5", Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value.ToString()));
                 cmd.ExecuteNonQuery();
                 con.Close();
                 GridView1.EditIndex = -1;
@@ -117,8 +116,8 @@ namespace ecommerce
 
         protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            int Product_ID = GridView1.EditIndex;
-            //int Product_ID = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value);
+            //int Product_ID = GridView1.EditIndex;
+            int Product_ID = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value);
             SqlConnection con1 = new SqlConnection(str);
             con1.Open();
             SqlCommand cmd1 = new SqlCommand("DELETE FROM tb_product1 WHERE Product_ID=@1", con1);

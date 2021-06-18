@@ -10,6 +10,7 @@
         </asp:DropDownList>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ecommerceConnectionString %>" SelectCommand="SELECT [Category_Name] FROM [tb_category]"></asp:SqlDataSource>
         <hr />
+        <br />
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" EmptyDataText="No Product to Display" OnPageIndexChanging="GridView1_PageIndexChanging" OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowEditing="GridView1_RowEditing" OnRowUpdating="GridView1_RowUpdating" OnRowDeleting="GridView1_RowDeleting">
             <Columns>
                 <asp:TemplateField HeaderText="Product ID">
@@ -66,9 +67,9 @@
                     </ItemTemplate>
                     <ItemStyle HorizontalAlign="Center" />
                 </asp:TemplateField>
-                <asp:CommandField HeaderText="Operation" ShowEditButton="True" ShowDeleteButton="True">
+                <asp:HyperLinkField HeaderText="Operation" NavigateUrl="~/EditProductDetail.aspx" Text="Edit">
                 <ItemStyle HorizontalAlign="Center" />
-                </asp:CommandField>
+                </asp:HyperLinkField>
             </Columns>
             <FooterStyle BackColor="White" ForeColor="#000066" />
             <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />

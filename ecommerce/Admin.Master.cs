@@ -34,5 +34,10 @@ namespace ecommerce
 
             Response.Redirect("OrderStatus.aspx");
         }
+
+        protected void PaymentAdmin_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("PaymentAdmin.aspx");
+        }
     }
 }

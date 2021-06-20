@@ -39,7 +39,7 @@
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Image">
                     <ItemTemplate>
-                        <asp:Image ID="Image2" runat="server" ImageUrl='<%# Eval("Product_Image") %>' Height="100px" Width="92px" />
+                        <asp:Image ID="Image2" runat="server" ImageUrl='<%# Eval("Product_Img") %>' Height="100px" Width="92px" />
                     </ItemTemplate>
                     <ItemStyle HorizontalAlign="Center" />
                 </asp:TemplateField>

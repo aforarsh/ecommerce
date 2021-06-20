@@ -26,7 +26,7 @@ namespace ecommerce
         {
             SqlConnection con = new SqlConnection(str);
             con.Open();
-            SqlCommand comm = new SqlCommand("UPDATE tb_product1 SET Product_Name = '" + txtName.Text + "', Product_Desc = '" + txtDesc.Text + "', Product_Price = '" + int.Parse(txtPrice.Text) + "', Product_Qty = '" + int.Parse(txtQuantity.Text) + "' WHERE Product_ID= '" + int.Parse(TextBox1.Text) + "'", con);
+            SqlCommand comm = new SqlCommand("UPDATE tb_product SET Product_Name = '" + txtName.Text + "', Product_Desc = '" + txtDesc.Text + "', Product_Price = '" + int.Parse(txtPrice.Text) + "', Product_qty = '" + int.Parse(txtQuantity.Text) + "' WHERE Product_ID= '" + int.Parse(TextBox1.Text) + "'", con);
             comm.ExecuteNonQuery();
             con.Close();
             Response.Write("<script>alert('Product Detail Updated Successfully.')</script>");
@@ -36,14 +36,14 @@ namespace ecommerce
         {
             SqlConnection con = new SqlConnection(str);
             con.Open();
-            SqlCommand comm = new SqlCommand("SELECT * FROM tb_product1 WHERE Product_ID= '" + int.Parse(TextBox1.Text) + "'", con);
+            SqlCommand comm = new SqlCommand("SELECT * FROM tb_product WHERE Product_ID= '" + int.Parse(TextBox1.Text) + "'", con);
             SqlDataReader r = comm.ExecuteReader();
             while (r.Read())
             {
                 TextBox1.Text = r.GetValue(0).ToString();
                 txtName.Text = r.GetValue(1).ToString();
-                txtDesc.Text = r.GetValue(2).ToString();
-                txtPrice.Text = r.GetValue(4).ToString();
+                txtDesc.Text = r.GetValue(3).ToString();
+                txtPrice.Text = r.GetValue(2).ToString();
                 txtQuantity.Text = r.GetValue(5).ToString();
             }
             con.Close();
@@ -53,7 +53,7 @@ namespace ecommerce
         {
             SqlConnection con = new SqlConnection(str);
             con.Open();
-            SqlCommand comm = new SqlCommand("DELETE tb_product1 WHERE Product_ID= '" + int.Parse(TextBox1.Text) + "'", con);
+            SqlCommand comm = new SqlCommand("DELETE tb_product WHERE Product_ID= '" + int.Parse(TextBox1.Text) + "'", con);
             comm.ExecuteNonQuery();
             con.Close();
             Response.Write("<script>alert('Product Successfully Deleted.')</script>");

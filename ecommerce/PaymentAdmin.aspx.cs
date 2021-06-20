@@ -40,9 +40,9 @@ namespace ecommerce
             {
                 SqlConnection con = new SqlConnection(str);
                 con.Open();
-                SqlDataAdapter sda = new SqlDataAdapter("SELECT Payment_ID AS Payment_ID, Order_ID AS Order_ID, Total_Price AS Total_Price, receipt AS receipt, Tracking_No AS Tracking_No FROM tb_payment WHERE Payment_Date='" + TextBox1.Text + "' AND Order_Status='Pending'", con);
+                SqlDataAdapter sda = new SqlDataAdapter("SELECT Order_ID AS Order_ID, Total_Price AS Total_Price, receipt AS receipt, Tracking_No AS Tracking_No FROM tb_Order WHERE Payment_Date='" + TextBox1.Text + "' AND Payment_Status='Not Paid'", con);
                 DataSet ds = new DataSet();
-                sda.Fill(ds, "tb_payment");
+                sda.Fill(ds, "tb_Order");
                 if (ds.Tables[0].Rows.Count == 0)
                 {
                     Response.Write("<script>alert('No Record To Display')</script>");
@@ -66,20 +66,20 @@ namespace ecommerce
                 RadioButton rb1 = (row.Cells[0].FindControl("RadioButton1") as RadioButton);
                 RadioButton rb2 = (row.Cells[0].FindControl("RadioButton2") as RadioButton);
 
-                string Order_Status;
+                string Payment_Status;
                 if (rb1.Checked)
                 {
-                    Order_Status = rb1.Text;
+                    Payment_Status = rb1.Text;
                 }
                 else
                 {
-                    Order_Status = rb2.Text;
+                    Payment_Status = rb2.Text;
                 }
 
                 SqlConnection con = new SqlConnection(str);
                 con.Open();
-                SqlCommand cmd = new SqlCommand("UPDATE tb_payment SET Order_Status=@a WHERE Payment_ID=@b", con);
-                cmd.Parameters.AddWithValue("@a", Order_Status);
+                SqlCommand cmd = new SqlCommand("UPDATE tb_Order SET Payment_Status=@a WHERE Order_ID=@b", con);
+                cmd.Parameters.AddWithValue("@a", Payment_Status);
                 cmd.Parameters.AddWithValue("@b", Payment_ID);
                 cmd.ExecuteNonQuery();
                 con.Close();
@@ -91,9 +91,9 @@ namespace ecommerce
         {
             SqlConnection con = new SqlConnection(str);
             con.Open();
-            SqlDataAdapter sda = new SqlDataAdapter("SELECT Payment_ID AS Payment_ID, Order_ID AS Order_ID, Total_Price AS Total_Price, receipt AS receipt, Payment_Date AS Payment_Date, Order_Status AS Order_Status, Tracking_No AS Tracking_No FROM tb_payment", con);
+            SqlDataAdapter sda = new SqlDataAdapter("SELECT Order_ID AS Order_ID, Total_Price AS Total_Price, receipt AS receipt, Payment_Date AS Payment_Date, Payment_Status AS Payment_Status, Tracking_No AS Tracking_No FROM tb_Order", con);
             DataSet ds = new DataSet();
-            sda.Fill(ds, "tb_payment");
+            sda.Fill(ds, "tb_Order");
             GridView1.DataSource = ds;
             GridView1.DataBind();
             GridView1.Columns[0].Visible = false;
@@ -125,20 +125,20 @@ namespace ecommerce
 
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
+            e.Row.Cells[3].HorizontalAlign = HorizontalAlign.Center;
             e.Row.Cells[4].HorizontalAlign = HorizontalAlign.Center;
-            e.Row.Cells[5].HorizontalAlign = HorizontalAlign.Center;
         }
 
         protected void Button3_Click(object sender, EventArgs e)
         {
             SqlConnection con = new SqlConnection(str);
             con.Open();
-            SqlCommand comm = new SqlCommand("SELECT * FROM tb_payment WHERE Payment_ID= '" + int.Parse(TextBox2.Text) + "'", con);
+            SqlCommand comm = new SqlCommand("SELECT * FROM tb_Order WHERE Order_ID= '" + int.Parse(TextBox2.Text) + "'", con);
             SqlDataReader r = comm.ExecuteReader();
             while(r.Read())
             {
                 TextBox2.Text = r.GetValue(0).ToString();
-                TextBox3.Text = r.GetValue(4).ToString();
+                TextBox3.Text = r.GetValue(11).ToString();
             }
             con.Close();
         }
@@ -147,7 +147,7 @@ namespace ecommerce
         {
             SqlConnection con = new SqlConnection(str);
             con.Open();
-            SqlCommand comm = new SqlCommand("UPDATE tb_payment SET Tracking_No = '" + int.Parse(TextBox3.Text) + "' WHERE Payment_ID= '" + int.Parse(TextBox2.Text) + "'", con);
+            SqlCommand comm = new SqlCommand("UPDATE tb_Order SET Tracking_No = '" + int.Parse(TextBox3.Text) + "' WHERE Order_ID= '" + int.Parse(TextBox2.Text) + "'", con);
             comm.ExecuteNonQuery();
             con.Close();
             Response.Write("<script>alert('Tracking No Added Successfully.')</script>");

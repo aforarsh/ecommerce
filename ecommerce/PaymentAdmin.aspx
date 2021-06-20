@@ -102,7 +102,7 @@
             </tr>
             <tr>
                 <td class="auto-style4"></td>
-                <td class="auto-style5">Order ID:</td>
+                <td class="auto-style5">Payment ID:</td>
                 <td class="auto-style11">
                     <asp:TextBox ID="TextBox2" runat="server" CssClass="auto-style9" Font-Size="Medium" Width="200px"></asp:TextBox>
                 </td>
@@ -136,8 +136,8 @@
             <Columns>
                 <asp:TemplateField HeaderText="Order Status">
                     <ItemTemplate>
-                        <asp:RadioButton ID="RadioButton1" runat="server" Checked="True" GroupName="Ostatus" Text="Pending" /><br />
-                        <asp:RadioButton ID="RadioButton2" runat="server" GroupName="Ostatus" Text="Processing" />
+                        <asp:RadioButton ID="RadioButton1" runat="server" Checked="True" GroupName="Ostatus" Text="Not Paid" /><br />
+                        <asp:RadioButton ID="RadioButton2" runat="server" GroupName="Ostatus" Text="Paid" />
                         &nbsp;
                     </ItemTemplate>
                     <ItemStyle HorizontalAlign="Center" />  

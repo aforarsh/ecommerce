@@ -88,7 +88,7 @@ namespace ecommerce
             {
                 SqlConnection con = new SqlConnection(str);
                 con.Open();
-                SqlDataAdapter sda = new SqlDataAdapter("SELECT Order_ID AS Order_ID, Product_Name AS Product_Name, Product_Price AS Product_Price, Product_Qty AS Product_Qty, Order_Date AS Order_Date FROM tb_Order WHERE Order_Date='" +TextBox1.Text + "' AND Order_Status!='Completed'", con);
+                SqlDataAdapter sda = new SqlDataAdapter("SELECT Order_ID AS Order_ID, Product_Name AS Product_Name, Product_Price AS Product_Price, Product_Qty AS Product_Qty, Order_Date AS Order_Date FROM tb_Order WHERE Order_Date='" +TextBox1.Text + "' AND Payment_Status='Paid' AND Order_Status!='Completed'", con);
                 DataSet ds = new DataSet();
                 sda.Fill(ds, "tb_Order");
                 if (ds.Tables[0].Rows.Count == 0)
@@ -154,7 +154,7 @@ namespace ecommerce
         {
             SqlConnection con = new SqlConnection(str);
             con.Open();
-            SqlDataAdapter sda = new SqlDataAdapter("SELECT Order_ID AS Order_ID, Product_Name AS Product_Name, Product_Price AS Product_Price, Product_Qty AS Product_Qty, Order_Date AS Order_Date, Order_Status AS Status FROM tb_Order", con);
+            SqlDataAdapter sda = new SqlDataAdapter("SELECT Order_ID AS Order_ID, Product_Name AS Product_Name, Product_Price AS Product_Price, Product_Qty AS Product_Qty, Order_Date AS Order_Date, Order_Status AS Status FROM tb_Order WHERE Payment_Status='Paid'", con);
             DataSet ds = new DataSet();
             sda.Fill(ds, "tb_Order");
             GridView1.DataSource = ds;

@@ -10,12 +10,12 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-<body>
+<body style=" background-image: url('../img/bg.jpg');">
     <form id="form1" runat="server">
         <div>
             <table style="margin:0 auto;" class="auto-style1" >
                 <tr style="width:1100px; height:50px; border-color:#7FFFD4; background-color:White; ">
-                    <td style="width: 100px">
+                    <td style="width: 120px">
                         <asp:Image ID="Image1" runat="server" Height="151px" ImageUrl="~/img/log.jpg" Width="194px" /></td>
                     <td style="width: 700px" align="center">
                         <asp:Label ID="Label1" runat="server" Text="ZHR COMPUTER & NETWORK " Font-Bold="False" Font-Names="Copperplate Gothic Bold" ForeColor="RoyalBlue" Font-Size="Large"></asp:Label>
@@ -53,7 +53,7 @@
                                 <asp:Timer ID="Timer1" runat="server" Interval="2000" OnTick="Timer1_Tick">
 
                                 </asp:Timer>
-                                <asp:Image ID="Image3" runat="server" BackColor="White" BorderColor="Gray" Height="499px" Width="1096px" />
+                                <asp:Image ID="Image3" runat="server" BackColor="White" BorderColor="Gray" Height="499px" Width="1188px" />
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </td>
